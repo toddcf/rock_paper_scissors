@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors Part 1</title>
+</head>
+<body>
+
+<div id="game">
+	<p><h1>Rock Paper Scissors</h1></p>
+	<p><h2>Press r, p, or s to submit your choice.</h2></p>
+	<p><h3>Wins: <span id="wins"></span><h3></p>
+	<p><h3>Losses: <span id="losses"></span></h3></p>
+	<p><h3>Ties: <span id="ties"></span></h3></p>
+</div>
+
+<script type="text/javascript">
+
+// Create an array that lists out all of the options
+var options = ['r','p','s'];
+
+var wins = 0;
+var losses = 0;
+var ties = 0;
+
+// Captures Key Clicks
+document.onkeyup = function(event) {
+
+	// Determines which exact key was selected. Make it lowercase
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+	// Alerts with user guess
+	alert(userGuess);
+
+	// Create code to randomly choose one of the three options (Computer) 
+	var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+	// Alerts with Computer guess
+	alert(computerGuess);
+
+	if(userGuess == 'r' && computerGuess == 's') {
+		wins++;
+	}
+
+	if(userGuess == 'r' && computerGuess == 'p') {
+		losses++;
+	}
+
+	if(userGuess == 'p' && computerGuess == 'r') {
+		wins++;
+	}
+
+	if(userGuess == 'p' && computerGuess == 's') {
+		losses++
+	}
+
+	if(userGuess == 's' && computerGuess == 'r') {
+		losses++;
+	}
+
+	if(userGuess == 's' && computerGuess == 'p') {
+		wins++
+	}
+
+	if(userGuess == computerGuess) {
+		ties++;
+	}
+
+document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
+document.getElementById("ties").innerHTML = ties;
+	
+}
+
+</script>
+</body>
+</html>
